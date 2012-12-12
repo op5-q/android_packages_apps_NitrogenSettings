@@ -69,7 +69,7 @@
         android:title="@string/notification_screen_title">
 
         <!-- Preview -->
-        <com.derpquest.settings.preferences.AmbientLightSettingsPreview
+        <com.nitrogen.settings.preferences.AmbientLightSettingsPreview
             android:key="ambientlight_preview"
             android:layout="@layout/ambient_light"
             android:selectable="false"/>
