@@ -35,4 +35,8 @@
             android:summary="@string/pulse_settings_summary"
             android:fragment="com.nitrogen.settings.fragments.PulseSettings" />
 
+    <SwitchPreference
+        android:key="navbar_visibility"
+        android:title="@string/navbar_visibility" />
+
 </PreferenceScreen>

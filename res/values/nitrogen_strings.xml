@@ -152,7 +152,7 @@
     <!-- Navbar options -->
     <string name="navbar_invert_layout_title">Invert layout</string>
 
-    <string name="navbar_visibility">Allow navigation bar</string>
+    <string name="navbar_visibility">Enable Navigation Bar</string>
 
     <!-- Incall vibrate options -->
     <string name="incall_vibration_category">In-call vibration options</string>
