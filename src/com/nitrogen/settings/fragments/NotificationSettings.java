@@ -16,6 +16,7 @@ import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
 import com.nitrogen.settings.preferences.Utils;
+import com.nitrogen.settings.preferences.AmbientLightSettingsPreview;
 
 import android.provider.Settings;
 import androidx.preference.Preference.OnPreferenceChangeListener;
@@ -61,6 +62,7 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
         mEdgeLightColorPreference.setOnPreferenceChangeListener(this);
         int edgeLightColor = Settings.System.getInt(getContentResolver(),
                 Settings.System.PULSE_AMBIENT_LIGHT_COLOR, 0xFF3980FF);
+        AmbientLightSettingsPreview.setAmbientLightPreviewColor(edgeLightColor);
         String edgeLightColorHex = ColorPickerPreference.convertToRGB(edgeLightColor);
         if (edgeLightColorHex.equals("#3980ff")) {
             mEdgeLightColorPreference.setSummary(R.string.default_string);
@@ -87,6 +89,7 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
             } else {
                 preference.setSummary(hex);
             }
+            AmbientLightSettingsPreview.setAmbientLightPreviewColor(Integer.valueOf(String.valueOf(newValue)));
             int intHex = ColorPickerPreference.convertToColorInt(hex);
             Settings.System.putInt(getContentResolver(),
                     Settings.System.PULSE_AMBIENT_LIGHT_COLOR, intHex);
