@@ -32,8 +32,10 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
     private Preference mChargingLeds;
     private static final String INCALL_VIB_OPTIONS = "incall_vib_options";
     private static final String PULSE_AMBIENT_LIGHT_COLOR = "pulse_ambient_light_color";
+    private static final String PULSE_AMBIENT_LIGHT_DURATION = "pulse_ambient_light_duration";
 
     private ColorPickerPreference mEdgeLightColorPreference;
+    private CustomSeekBarPreference mEdgeLightDurationPreference;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -66,6 +68,12 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
             mEdgeLightColorPreference.setSummary(edgeLightColorHex);
         }
         mEdgeLightColorPreference.setNewPreviewColor(edgeLightColor);
+
+        mEdgeLightDurationPreference = (SystemSettingSeekBarPreference) findPreference(PULSE_AMBIENT_LIGHT_DURATION);
+        mEdgeLightDurationPreference.setOnPreferenceChangeListener(this);
+        int duration = Settings.System.getInt(getContentResolver(),
+                Settings.System.PULSE_AMBIENT_LIGHT_DURATION, 2);
+        mEdgeLightDurationPreference.setValue(duration);
     }
 
 
@@ -82,6 +90,11 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
             int intHex = ColorPickerPreference.convertToColorInt(hex);
             Settings.System.putInt(getContentResolver(),
                     Settings.System.PULSE_AMBIENT_LIGHT_COLOR, intHex);
+            return true;
+        } else if (preference == mEdgeLightDurationPreference) {
+            int value = (Integer) newValue;
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.PULSE_AMBIENT_LIGHT_DURATION, value);
             return true;
         }
         return false;
