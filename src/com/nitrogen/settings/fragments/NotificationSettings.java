@@ -69,7 +69,7 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
         }
         mEdgeLightColorPreference.setNewPreviewColor(edgeLightColor);
 
-        mEdgeLightDurationPreference = (SystemSettingSeekBarPreference) findPreference(PULSE_AMBIENT_LIGHT_DURATION);
+        mEdgeLightDurationPreference = (CustomSeekBarPreference) findPreference(PULSE_AMBIENT_LIGHT_DURATION);
         mEdgeLightDurationPreference.setOnPreferenceChangeListener(this);
         int duration = Settings.System.getInt(getContentResolver(),
                 Settings.System.PULSE_AMBIENT_LIGHT_DURATION, 2);
