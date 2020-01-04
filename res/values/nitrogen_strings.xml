@@ -243,4 +243,7 @@
     <string name="pulse_ambient_light_color_title">Edge light color</string>
     <string name="pulse_ambient_light_duration_title">Duration</string>
     <string name="pulse_ambient_light_duration_summary">Sets the ambient light animation duration</string>
+
+    <string name="nav_bar_tuner_title">Navigation bar tuner</string>
+    <string name="nav_bar_tuner_summary">Reorder and change navbar buttons</string>
 </resources>
