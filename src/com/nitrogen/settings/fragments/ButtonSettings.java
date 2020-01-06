@@ -50,6 +50,8 @@ public class ButtonSettings extends ActionFragment implements OnPreferenceChange
     private static final String KEY_BACKLIGHT_TIMEOUT = "backlight_timeout";
     private static final String HWKEY_DISABLE = "hardware_keys_disable";
     private static final String DISABLE_NAV_KEYS = "disable_nav_keys";
+    private static final String NAV_BAR_TUNER = "nav_bar_tuner";
+
 
     // category keys
     private static final String CATEGORY_HWKEY = "hardware_keys";
@@ -75,6 +77,7 @@ public class ButtonSettings extends ActionFragment implements OnPreferenceChange
     private CustomSeekBarPreference mButtonBrightness;
     private SwitchPreference mButtonBrightness_sw;
     private SwitchPreference mHwKeyDisable;
+    private Preference mNavBarTuner;
     private SwitchPreference mDisableNavigationKeys;
     private boolean mIsNavSwitchingMode = false;
     private Handler mHandler;
@@ -90,6 +93,7 @@ public class ButtonSettings extends ActionFragment implements OnPreferenceChange
 
         // Force Navigation bar related options
         mDisableNavigationKeys = (SwitchPreference) findPreference(DISABLE_NAV_KEYS);
+        mNavBarTuner = (Preference) findPreference(NAV_BAR_TUNER);
 
         // Only visible on devices that does not have a navigation bar already
         if (ActionUtils.isHWKeysSupported(getActivity())) {
@@ -261,6 +265,7 @@ public class ButtonSettings extends ActionFragment implements OnPreferenceChange
                     mIsNavSwitchingMode = false;
                 }
             }, 1000);
+            mNavBarTuner.setEnabled(isNavKeysChecked);
             return true;
         }
         return false;
