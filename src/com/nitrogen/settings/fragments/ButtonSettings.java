@@ -265,7 +265,6 @@ public class ButtonSettings extends ActionFragment implements OnPreferenceChange
                     mIsNavSwitchingMode = false;
                 }
             }, 1000);
-            mNavBarTuner.setEnabled(isNavKeysChecked);
             return true;
         }
         return false;
