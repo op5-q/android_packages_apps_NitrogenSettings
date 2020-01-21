@@ -23,10 +23,4 @@
             android:title="@string/wakeup_when_plugged_unplugged_title"
             android:summary="@string/wakeup_when_plugged_unplugged_summary"
             android:defaultValue="true" />
-
-    <Preference
-         android:key="clock_settings"
-         android:title="@string/clock_style_category_title"
-         android:summary="@string/clock_style_category_summary"
-         android:fragment="com.nitrogen.settings.fragments.ClockSettings" />
 </PreferenceScreen>
