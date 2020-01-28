@@ -87,5 +87,12 @@
             android:defaultValue="false"
             android:dependency="pulse_ambient_light" />
 
+        <com.nitrogen.settings.preferences.SystemSettingSwitchPreference
+            android:key="ambient_notification_light_hide_aod"
+            android:title="@string/ambient_notification_light_hide_aod_title"
+            android:summary="@string/ambient_notification_light_hide_aod_sumary"
+            android:dependency="ambient_notification_light_enabled"
+            android:defaultValue="false" />
+
     </PreferenceCategory>
 </PreferenceScreen>
