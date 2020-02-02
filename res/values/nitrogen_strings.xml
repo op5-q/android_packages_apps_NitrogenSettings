@@ -232,14 +232,6 @@
     <string name="media_art_title">Media cover art</string>
     <string name="media_art_summary">Enable media cover art on the lockscreen</string>
 
-    <!-- Ambient edge lighting -->
-    <string name="notification_screen_title">Screen</string>
-    <string name="pulse_ambient_light_title">Edge lighting</string>
-    <string name="pulse_ambient_light_summary">Light up the side edges of the screen on notification pulse</string>
-    <string name="pulse_ambient_light_color_title">Edge light color</string>
-    <string name="pulse_ambient_light_duration_title">Duration</string>
-    <string name="pulse_ambient_light_duration_summary">Sets the ambient light animation duration</string>
-
     <string name="nav_bar_tuner_title">Navigation bar tuner</string>
     <string name="nav_bar_tuner_summary">Reorder and change navbar buttons</string>
 
@@ -271,4 +263,8 @@
     <string name="clock_date_format">Date format</string>
     <string name="clock_date_string_edittext_title">Must be in DateFormat eg. MM/dd/yy</string>
     <string name="clock_date_string_edittext_summary">Enter string</string>
+
+    <!-- Edge lighting (aka pulse ambient light) -->
+    <string name="notification_screen_title">Screen</string>
+
 </resources>
