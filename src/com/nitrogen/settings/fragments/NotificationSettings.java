@@ -32,11 +32,13 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
 
     private ColorPickerPreference mEdgeLightColorPreference;
     private CustomSeekBarPreference mEdgeLightDurationPreference;
+    private CustomSeekBarPreference mEdgeLightRepeatCountPreference;
     private Preference mChargingLeds;
 
     private static final String INCALL_VIB_OPTIONS = "incall_vib_options";
     private static final String PULSE_AMBIENT_LIGHT_COLOR = "pulse_ambient_light_color";
     private static final String PULSE_AMBIENT_LIGHT_DURATION = "pulse_ambient_light_duration";
+    private static final String PULSE_AMBIENT_LIGHT_REPEAT_COUNT = "pulse_ambient_light_repeat_count";
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -75,6 +77,12 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
         int duration = Settings.System.getInt(getContentResolver(),
                 Settings.System.PULSE_AMBIENT_LIGHT_DURATION, 2);
         mEdgeLightDurationPreference.setValue(duration);
+
+        mEdgeLightRepeatCountPreference = (CustomSeekBarPreference) findPreference(PULSE_AMBIENT_LIGHT_REPEAT_COUNT);
+        mEdgeLightRepeatCountPreference.setOnPreferenceChangeListener(this);
+        int rCount = Settings.System.getInt(getContentResolver(),
+                Settings.System.PULSE_AMBIENT_LIGHT_REPEAT_COUNT, 0);
+        mEdgeLightRepeatCountPreference.setValue(rCount);
 
         int defaultDoze = getResources().getInteger(
                 com.android.internal.R.integer.config_screenBrightnessDoze);
@@ -127,6 +135,11 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
             int value = (Integer) newValue;
             Settings.System.putInt(getContentResolver(),
                     Settings.System.PULSE_AMBIENT_LIGHT_DURATION, value);
+            return true;
+        } else if (preference == mEdgeLightRepeatCountPreference) {
+            int value = (Integer) newValue;
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.PULSE_AMBIENT_LIGHT_REPEAT_COUNT, value);
             return true;
         }
         return false;
