@@ -64,6 +64,7 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
         mEdgeLightColorPreference.setOnPreferenceChangeListener(this);
         int edgeLightColor = Settings.System.getInt(getContentResolver(),
                 Settings.System.PULSE_AMBIENT_LIGHT_COLOR, 0xFF3980FF);
+        AmbientLightSettingsPreview.setAmbientLightPreviewColor(edgeLightColor);
         String edgeLightColorHex = String.format("#%08x", (0xFF3980FF & edgeLightColor));
         if (edgeLightColorHex.equals("#ff3980ff")) {
             mEdgeLightColorPreference.setSummary(R.string.default_string);
@@ -104,7 +105,7 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
             } else {
                 preference.setSummary(hex);
             }
-            AmbientLightSettingsPreview.setAmbientLightPreviewColor(edgeLightColor);
+            AmbientLightSettingsPreview.setAmbientLightPreviewColor(Integer.valueOf(String.valueOf(newValue)));
             int intHex = ColorPickerPreference.convertToColorInt(hex);
             Settings.System.putInt(getContentResolver(),
                     Settings.System.PULSE_AMBIENT_LIGHT_COLOR, intHex);
@@ -127,6 +128,7 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
             } else {
                 preference.setSummary(hex);
             }
+            AmbientLightSettingsPreview.setAmbientLightPreviewColor(Integer.valueOf(String.valueOf(newValue)));
             int intHex = ColorPickerPreference.convertToColorInt(hex);
             Settings.System.putInt(getContentResolver(),
                     Settings.System.PULSE_AMBIENT_LIGHT_COLOR, intHex);
